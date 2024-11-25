@@ -18,4 +18,5 @@ jobs:
         "BUILD_TYPE":  "nss",
         "BUILD_VER": "24.10-SNAPSHOT",
         "BUILD_TAG": "",
+        "BUILD_SYNC": "y",
         "BUILD_KMOD": "y"}'

@@ -1,4 +1,4 @@
-name: build OpenWrt image
+name: internal OpenWrt image builder
 on: 
   workflow_call:
     inputs:
@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    name: build OpenWrt Image
+    name: build OpenWrt image
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -46,11 +46,10 @@ jobs:
       - name: Prepare source code
         run:  |
           git clone $SOURCE_REPO --branch $SOURCE_BRANCH .
-          [ ! -z $BUILD_TAG ] && git checkout $BUILD_TAG
           git clone $BUILD_REPO --branch $BUILD_BRANCH $BUILD_BRANCH
           cp $BUILD_BRANCH/script/*.sh .
           rm -rf $BUILD_BRANCH
-          sh $BUILD_INIT $BUILD_TYPE $BUILD_VER
+          sh $BUILD_INIT $BUILD_TYPE $BUILD_VER $BUILD_SYNC $BUILD_TAG
 
       - name: Update feeds
         run:  scripts/feeds update -a && scripts/feeds install -a

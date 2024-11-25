@@ -1,4 +1,4 @@
-name: build nss snapshot with kmod
+name: build nss snapshot
 on:
   workflow_dispatch:
   workflow_call:          
@@ -18,4 +18,5 @@ jobs:
         "BUILD_TYPE":  "nss",
         "BUILD_VER": "snapshot",
         "BUILD_TAG": "",
+        "BUILD_SYNC": "y",
         "BUILD_KMOD": "y"}'
