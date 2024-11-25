@@ -1,0 +1,12 @@
+name: auto build nss snapshot
+on:
+  schedule:
+    - cron: "30 12 * * 3,6"
+
+jobs:
+  call-build-nss-snapshot:
+    permissions:
+      contents: write
+    uses:
+      ./.github/workflows/nss_snapshot.yml
+              
