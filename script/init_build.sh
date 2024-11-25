@@ -8,7 +8,7 @@ tag="" #commit hash
 [ ! -z $1 ] && type=$1
 [ ! -z $2 ] && ver=$2
 [ ! -z $3 ] && sync=$3
-[ ! -z $4 ] && tag=$4 && sync="n"
+[ ! -z $4 ] && tag=$4
 
 if [ $type = "foss" ]; then    
     #use official PR from testuser7
@@ -33,6 +33,7 @@ fi
     
 if [ ! -z $tag ]; then
     git checkout $tag
+    sync="n"
 fi    
 
 if [ $sync = "y" ]; then
