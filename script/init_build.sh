@@ -17,7 +17,7 @@ elif [ $type = "nss" -a $ver = "snapshot" ]; then
     #my PR for qosmio NSS patch, may subject to change
     PATCH="https://github.com/arix00/openwrt-mx4300/pull/39.diff"
 elif [ $type = "nss" -a $ver != "snapshot" ]; then
-    #TBA. patch for 24.10 branch
+    #nss patch for 24.10 branch
     PATCH="https://github.com/arix00/openwrt-mx4300/pull/41.diff"
 else
     echo "Unsupported build: $type $ver"
@@ -32,13 +32,13 @@ fi
 
     
 if [ ! -z $tag ]; then
-    git checkout $tag
+    git reset --hard $tag
     sync="n"
 fi    
 
 if [ $sync = "y" ]; then
     #use published build version instead.
-    git checkout $(wget $buildinfo -O - | cut -d '-' -f 2)
+    git reset --hard $(wget $buildinfo -O - | cut -d '-' -f 2)
 fi
 
 
