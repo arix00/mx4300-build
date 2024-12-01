@@ -15,6 +15,8 @@ if [ $type = "foss" ]; then
     #https://github.com/openwrt/openwrt/pull/16070
     PATCH="https://github.com/openwrt/openwrt/pull/16070.diff"
 elif [ $type = "nss" ]; then
+    #qosmio NSS patch
+    #https://github.com/qosmio/openwrt-ipq
     case $ver in
         "snapshot")   
             PATCH="https://github.com/openwrt/openwrt/compare/main...qosmio:openwrt-ipq:main-nss-mx4300.diff"
