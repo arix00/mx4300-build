@@ -8,7 +8,7 @@ on:
 
 
 jobs:
-  build:
+  image-builder:
     name: build OpenWrt image
     runs-on: ubuntu-latest
     permissions:

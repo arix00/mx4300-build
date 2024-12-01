@@ -20,9 +20,11 @@ elif [ $type = "nss" ]; then
     case $ver in
         "snapshot")   
             PATCH="https://github.com/openwrt/openwrt/compare/main...qosmio:openwrt-ipq:main-nss-mx4300.diff"
+            ;;
         "24.10"*)
             PATCH="https://github.com/openwrt/openwrt/compare/openwrt-24.10...qosmio:openwrt-ipq:24.10-nss-mx4300.diff"
-    esac 
+            ;;
+    esac
 fi
 
 [ -z $PATCH ] && echo "Unsupported $type $ver" && exit 1
