@@ -8,8 +8,8 @@ on:
 
 
 jobs:
-  image-builder:
-    name: build OpenWrt image
+  internal-image-builder:
+    name: internal OpenWrt builder
     runs-on: ubuntu-latest
     permissions:
       contents: write
