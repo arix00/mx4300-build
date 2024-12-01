@@ -26,7 +26,7 @@ if [ $type = "nss" -a $BUILD_KMOD != "n" ]; then
     kmodmsg="- [use kmods](https://github.com/${GITHUB_REPOSITORY}/blob/build/doc/${mdfile})"
 fi
 
-cp .config release/build.config
+cp .config release/fullconfig.buildinfo
 cp bin/targets/qualcommax/ipq807x/openwrt-*-ipq807x-linksys_mx4300-* release/
 cp bin/targets/qualcommax/ipq807x/openwrt-*-ipq807x-linksys_mx4300.manifest release/
 
