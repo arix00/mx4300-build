@@ -1,4 +1,4 @@
-name: build nss 24.10
+name: build nss 24.10 no kmod
 on:
   workflow_dispatch:
       
@@ -19,4 +19,4 @@ jobs:
         "BUILD_VER": "24.10-SNAPSHOT",
         "BUILD_TAG": "",
         "BUILD_SYNC": "y",
-        "BUILD_KMOD": "y"}'
+        "BUILD_KMOD": "n"}'
