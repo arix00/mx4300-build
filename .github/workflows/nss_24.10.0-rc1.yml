@@ -1,0 +1,22 @@
+name: build nss 24.10
+on:
+  workflow_dispatch:
+      
+jobs:
+  call-image-builder-nss-24_10:
+    permissions:
+      contents: write
+    uses:
+      ./.github/workflows/_image_builder.yml
+    with:
+      build_settings: 
+        '{"SOURCE_REPO":  "https://github.com/openwrt/openwrt.git", 
+        "SOURCE_BRANCH": "openwrt-24.10",
+        "BUILD_REPO":    "https://github.com/${{github.repository}}.git",
+        "BUILD_BRANCH": "build",
+        "BUILD_INIT": "init_build.sh",
+        "BUILD_TYPE":  "nss",
+        "BUILD_VER": "24.10.0-rc1",
+        "BUILD_TAG": "4171498",
+        "BUILD_SYNC": "y",
+        "BUILD_KMOD": "y"}'
