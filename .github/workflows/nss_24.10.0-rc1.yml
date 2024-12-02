@@ -1,4 +1,4 @@
-name: build nss 24.10
+name: build nss 24.10.0-rc1
 on:
   workflow_dispatch:
       
