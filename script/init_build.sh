@@ -49,5 +49,6 @@ fi
 
 wget $PATCH -O mx4300.diff 
 patch -p1 < mx4300.diff
+
 #fix for nss patch to handle both 24.10-snapshot and (tagged) release
-[ -f feeds.conf.default.rej ] && [ $type = "nss"] && echo "src-git nss_packages https://github.com/qosmio/nss-packages.git;NSS-12.5-K6.x" >> feeds.conf.default &&  echo "src-git sqm_scripts_nss https://github.com/qosmio/sqm-scripts-nss.git" >> feeds.conf.default && cat feeds.conf.default
+[ -f feeds.conf.default.rej ]  && echo "src-git nss_packages https://github.com/qosmio/nss-packages.git;NSS-12.5-K6.x" >> feeds.conf.default &&  echo "src-git sqm_scripts_nss https://github.com/qosmio/sqm-scripts-nss.git" >> feeds.conf.default && cat feeds.conf.default
