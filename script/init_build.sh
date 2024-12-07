@@ -48,9 +48,7 @@ fi
 
 
 curl -L $PATCH -o mx4300.diff
-ls -l mx4300.diff
 patch -p1 < mx4300.diff
-echo $?
 
 #fix for nss patch to handle both 24.10-snapshot and (tagged) release
 if [ -f "feeds.conf.default.rej" -a $type = "nss" ]; then
