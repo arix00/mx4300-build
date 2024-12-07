@@ -35,6 +35,7 @@ jobs:
                 unzip \
                 zlib1g-dev \
                 file \
+                curl \
                 jq \
                 wget && \
           sudo apt-get clean
