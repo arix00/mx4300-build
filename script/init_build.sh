@@ -1,4 +1,4 @@
-o#!/bin/sh
+#!/bin/sh
 
 type="foss"  #foss nss
 ver="snapshot" #snapshot or release#
@@ -46,13 +46,21 @@ if [ $sync = "y" ]; then
     git reset --hard $(wget $buildinfo -O - | cut -d '-' -f 2)
 fi
 
-
+echo $PATCH
 curl -L $PATCH -o mx4300.diff
 patch -p1 < mx4300.diff
 
 #fix for nss patch to handle both 24.10-snapshot and (tagged) release
-if [ -f "feeds.conf.default.rej" -a $type = "nss" ]; then
-  echo "src-git nss_packages https://github.com/qosmio/nss-packages.git;NSS-12.5-K6.x
+if [ $type = "nss" ]; then
+  if [ -f "feeds.conf.default.rej" ]; then
+    echo "add src-git to feeds.conf.default"
+    echo "src-git nss_packages https://github.com/qosmio/nss-packages.git;NSS-12.5-K6.x
 src-git sqm_scripts_nss https://github.com/qosmio/sqm-scripts-nss.git" >> feeds.conf.default
   cat feeds.conf.default
+  fi
+  if [ -f "package/firmware/ipq-wifi/Makefile.rej" ]; then
+    echo "use package/firmware/ipq-wifi/Makefile from qosmio"
+    curl -L https://raw.githubusercontent.com/qosmio/openwrt-ipq/refs/heads/main-nss-mx4300/package/firmware/ipq-wifi/Makefile -o package/firmware/ipq-wifi/Makefile
+    cat package/firmware/ipq-wifi/Makefile
+  fi
 fi
