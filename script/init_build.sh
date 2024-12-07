@@ -50,7 +50,8 @@ echo $PATCH
 curl -L $PATCH -o mx4300.diff
 patch -p1 < mx4300.diff
 
-#fix for nss patch to handle both 24.10-snapshot and (tagged) release
+#1. support both 24.10-snapshot and (tagged) release
+#2. upstream updated package/firmware/ipq-wifi/Makefile, need fix from qosmio
 if [ $type = "nss" ]; then
   if [ -f "feeds.conf.default.rej" ]; then
     echo "##append qosmio's src-git to feeds.conf.default"
@@ -60,6 +61,6 @@ if [ $type = "nss" ]; then
   if [ -f "package/firmware/ipq-wifi/Makefile.rej" ]; then
     echo "##use package/firmware/ipq-wifi/Makefile from qosmio"
     curl -L https://raw.githubusercontent.com/qosmio/openwrt-ipq/refs/heads/main-nss-mx4300/package/firmware/ipq-wifi/Makefile -o package/firmware/ipq-wifi/Makefile
-    cat package/firmware/ipq-wifi/Makefile
+    #cat package/firmware/ipq-wifi/Makefile
   fi
 fi
