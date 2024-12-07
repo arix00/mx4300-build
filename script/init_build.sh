@@ -47,7 +47,8 @@ if [ $sync = "y" ]; then
 fi
 
 
-wget $PATCH -O mx4300.diff 
+curl -L $PATCH -o mx4300.diff
+ll mx4300.diff && cat mx4300.diff
 patch -p1 < mx4300.diff
 
 #fix for nss patch to handle both 24.10-snapshot and (tagged) release
